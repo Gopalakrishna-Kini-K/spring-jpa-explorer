@@ -38,8 +38,15 @@ public class NationalTeamController {
         fromDb.setCountryName(nationalTeam.getCountryName());
         fromDb.setPlayers(nationalTeam.getPlayers());
 
-        nationalTeamRepository.save(fromDb);
+        nationalTeamRepository.save(fromDb); // selects the national team, deletes everything from join table! and re inserts them back.
 
         return new ResponseEntity<>(fromDb, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/nationalTeam/{nId}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteNationalTeam(@PathVariable(value = "nId") long nationalTeamId){
+        NationalTeam fromDb = nationalTeamRepository.findOne(nationalTeamId);
+        nationalTeamRepository.delete(nationalTeamId);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 }
