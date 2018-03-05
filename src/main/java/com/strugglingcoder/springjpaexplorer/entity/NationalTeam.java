@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Kini on 31-Jan-18.
@@ -23,7 +24,7 @@ public class NationalTeam {
     private String boardName;
 
     @OneToMany( fetch = FetchType.EAGER , cascade = CascadeType.ALL)
-    private List<Player> players;
+    private Set<Player> players;
 
     public Long getId() {
         return id;
@@ -49,11 +50,11 @@ public class NationalTeam {
         this.boardName = boardName;
     }
 
-    public List<Player> getPlayers() {
+    public Set<Player> getPlayers() {
         return players;
     }
 
-    public void setPlayers(List<Player> players) {
+    public void setPlayers(Set<Player> players) {
         this.players = players;
     }
 }

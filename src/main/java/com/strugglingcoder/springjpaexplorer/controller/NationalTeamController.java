@@ -27,4 +27,19 @@ public class NationalTeamController {
     public ResponseEntity< List<NationalTeam> > getAllNationalTeams(){
         return new ResponseEntity<>( nationalTeamRepository.findAll(), HttpStatus.OK);
     }
+
+    @RequestMapping(value= "/nationalTeam", method = RequestMethod.PUT, consumes = "application/json")
+    public ResponseEntity<?> updateNationalTeam(@RequestBody NationalTeam nationalTeam){
+        if ( nationalTeam == null || nationalTeam.getId() == null)
+            return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
+        NationalTeam fromDb = nationalTeamRepository.findOne(nationalTeam.getId() );
+
+        fromDb.setBoardName(nationalTeam.getBoardName());
+        fromDb.setCountryName(nationalTeam.getCountryName());
+        fromDb.setPlayers(nationalTeam.getPlayers());
+
+        nationalTeamRepository.save(fromDb);
+
+        return new ResponseEntity<>(fromDb, HttpStatus.OK);
+    }
 }
