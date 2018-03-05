@@ -27,6 +27,10 @@ public class Player {
         return Id;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "national_team_id")
+    private NationalTeam nationalTeam;
+
     public void setId(Long id) {
         Id = id;
     }
@@ -53,5 +57,13 @@ public class Player {
 
     public void setPlayerSpeciality(String playerSpeciality) {
         this.playerSpeciality = playerSpeciality;
+    }
+
+    public NationalTeam getNationalTeam() {
+        return nationalTeam;
+    }
+
+    public void setNationalTeam(NationalTeam nationalTeam) {
+        this.nationalTeam = nationalTeam;
     }
 }

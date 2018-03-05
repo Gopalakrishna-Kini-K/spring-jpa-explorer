@@ -36,7 +36,7 @@ public class NationalTeamController {
 
         fromDb.setBoardName(nationalTeam.getBoardName());
         fromDb.setCountryName(nationalTeam.getCountryName());
-        fromDb.setPlayers(nationalTeam.getPlayers());
+        //fromDb.setPlayers(nationalTeam.getPlayers());
 
         nationalTeamRepository.save(fromDb); // selects the national team, deletes everything from join table! and re inserts them back.
 

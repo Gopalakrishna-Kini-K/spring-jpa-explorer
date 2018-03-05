@@ -23,10 +23,6 @@ public class NationalTeam {
 
     private String boardName;
 
-    //@OneToMany( fetch = FetchType.LAZY , cascade = CascadeType.ALL) = deletes child entities along with the parent
-    @OneToMany( fetch = FetchType.LAZY , cascade = CascadeType.PERSIST) // deletes only parent entity. Players will show up in GET /player even if nationalTeam deleted.
-    private Set<Player> players;
-
     public Long getId() {
         return id;
     }
@@ -49,13 +45,5 @@ public class NationalTeam {
 
     public void setBoardName(String boardName) {
         this.boardName = boardName;
-    }
-
-    public Set<Player> getPlayers() {
-        return players;
-    }
-
-    public void setPlayers(Set<Player> players) {
-        this.players = players;
     }
 }
