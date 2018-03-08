@@ -27,7 +27,7 @@ public class Player {
         return Id;
     }
 
-    @ManyToOne
+    @ManyToOne( cascade = CascadeType.PERSIST )
     @JoinColumn(name = "national_team_id")
     private NationalTeam nationalTeam;
 
